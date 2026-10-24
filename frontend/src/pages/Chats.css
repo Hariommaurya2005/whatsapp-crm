@@ -1,0 +1,107 @@
+.chats-root {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.chats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.chats-title {
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.045em;
+}
+
+.chats-search {
+  width: min(100%, 360px);
+  background: rgba(8, 16, 29, 0.72);
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  color: var(--text-primary);
+  padding: 11px 15px;
+  font-size: 0.87rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+.chats-search:focus { border-color: var(--accent); box-shadow: var(--focus-ring); background: rgba(8, 16, 29, 0.95); }
+.chats-search::placeholder { color: var(--text-muted, #71829b); }
+
+.threads-list {
+  background: linear-gradient(145deg, rgba(19, 33, 53, 0.98), rgba(13, 25, 42, 0.98));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.thread-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease, padding 0.15s ease;
+  min-width: 0;
+}
+.thread-item:last-child { border-bottom: none; }
+.thread-item:hover { background: rgba(129, 158, 194, 0.075); }
+.thread-item.unread { background: linear-gradient(90deg, rgba(52, 211, 153, 0.075), rgba(52, 211, 153, 0.015)); }
+.thread-item.unread:hover { background: rgba(52, 211, 153, 0.1); }
+
+.thread-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #1f6e5b, #184a4b);
+  border: 1px solid rgba(52, 211, 153, 0.23);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #c2f9df;
+  flex-shrink: 0;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.14);
+}
+.thread-body { flex: 1; min-width: 0; }
+.thread-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.thread-name { font-size: 0.91rem; font-weight: 750; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.thread-item.unread .thread-name { color: #d9ffed; }
+.thread-time { font-size: 0.71rem; color: var(--text-muted, #71829b); white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+.thread-item.unread .thread-time { color: var(--accent); font-weight: 700; }
+.thread-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.thread-preview { font-size: 0.82rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.preview-you { color: var(--text-muted, #71829b); }
+.thread-unread-badge { background: var(--accent); color: #052519; font-size: 0.67rem; font-weight: 800; padding: 2px 7px; border-radius: 999px; min-width: 21px; text-align: center; flex-shrink: 0; }
+.thread-phone { font-size: 0.7rem; color: var(--text-muted, #71829b); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin-top: 4px; }
+
+/* Skeleton loading */
+.chats-loading { display: flex; flex-direction: column; gap: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.thread-skeleton { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.skeleton-avatar { width: 48px; height: 48px; border-radius: 15px; background: var(--bg-tertiary); flex-shrink: 0; animation: shimmer 1.4s ease infinite; }
+.skeleton-lines { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.skeleton-line { height: 10px; border-radius: 5px; background: var(--bg-tertiary); animation: shimmer 1.4s ease infinite; }
+.w70 { width: 70%; }
+.w50 { width: 50%; }
+.chats-empty { padding: 64px 20px; text-align: center; color: var(--text-secondary); background: rgba(14, 26, 44, 0.36); border: 1px dashed var(--border-hover); border-radius: 18px; }
+
+@keyframes shimmer { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.9; } }
+
+@media (max-width: 600px) {
+  .chats-header { align-items: stretch; flex-direction: column; gap: 12px; }
+  .chats-search { width: 100%; max-width: none; }
+  .thread-item { padding: 14px 13px; gap: 11px; }
+  .thread-avatar { width: 42px; height: 42px; border-radius: 13px; }
+  .thread-phone { font-size: 0.66rem; }
+}
